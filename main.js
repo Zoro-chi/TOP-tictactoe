@@ -3,6 +3,7 @@
 const gameBoard = (() => {
 
     let gameBoardArr = []
+    const spaces = [null, null, null, null, null, null, null, null, null]
     const board = document.querySelector("#game-board")
     let positionOne = gameBoardArr.push(document.querySelector(".one"))
     let positionTwo = gameBoardArr.push(document.querySelector(".two"))
@@ -14,67 +15,39 @@ const gameBoard = (() => {
     let positionEight = gameBoardArr.push(document.querySelector(".eight"))
     let positionNine =gameBoardArr.push( document.querySelector(".nine"))
     
-    console.log(gameBoardArr)
-    return {gameBoardArr}
+    console.log(gameBoardArr[0].dataset.position)
+    return {gameBoardArr, spaces}
 })()
 
-
-const player = ((name, sign) => {
-    const boardMove = () => {
+function Player(name, sign){
+    this.name = name
+    this.sign = sign
+}
+Player.prototype.move = () => {
+    let posclicked = (e) =>{
+        const dataPos = e.target.dataset.position
+        console.log("X")
     for (let pos of gameBoard.gameBoardArr) {
-        pos.addEventListener('click', function(event) {
-        event.target.innerText = "X"
-        })
+        pos.addEventListener("click", posclicked)
     }
-    return {
-        name,
-        sign,
-        boardMove
-    }
-}})
+    
+}
+}
 
 
 const game = (() => {
     const gameBoardArr = gameBoard.gameBoardArr
-
-    const player1 = player("player1", "X") 
-    const player2 = player("player2", "O")
-
+    const player1 = new Player("player1", "X") 
+    const player2 = new Player("player2", "O")
+    let currentPlayer = player1;
     console.log(player1)
-
-    const playerMove = () => {
-        let turn = true;
-
-        function markBoard() {
-            if (turn) {
-                turn = false;
-                return player1.boardMove()
-            } else {
-                turn = true;
-                return player2.boardMove()
-            }
-        }
-        markBoard()
-        return{player1, player2, markBoard}
-    }
-
-    playerMove()
+    console.log(currentPlayer)
     
-    // const classX = "X"
-    // const classO = "O"
+    gameBoardArr.forEach((pos, index) => {
+        pos.addEventListener("click", currentPlayer.move)
+    })
 
-    // const paste = (event) =>{
-    //     if (event.target.innerText === classX) {
-    //         event.target.innerText = classO
-    //     } else {
-    //         event.target.innerText = classX
-    //     }
-        
-    // }
 
-    // gameBoardArr.forEach(pos => {
-    //     pos.addEventListener("click", paste)
-    // })
 })()
 
 

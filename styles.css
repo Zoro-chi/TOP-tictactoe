@@ -22,10 +22,19 @@
     grid-template-rows: 1fr 1fr 1fr;
     height: 60vh;
     width: 60vw;
-    border: 1px solid black;
 }
 #game-board div {
     outline-style: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
+    font-size: 7rem;
+    font-weight: 700;
+}
+#game-board div:hover{
+    cursor: crosshair;
+    background-color: beige;
 }
 #game-board div .one{
     grid-column: 1/2;

@@ -3,7 +3,7 @@
 const gameBoard = (() => {
 
     let gameBoardArr = []
-    let board = document.querySelector("#game-board")
+    const board = document.querySelector("#game-board")
     let positionOne = gameBoardArr.push(document.querySelector(".one"))
     let positionTwo = gameBoardArr.push(document.querySelector(".two"))
     let positionThree = gameBoardArr.push(document.querySelector(".three"))
@@ -14,29 +14,69 @@ const gameBoard = (() => {
     let positionEight = gameBoardArr.push(document.querySelector(".eight"))
     let positionNine =gameBoardArr.push( document.querySelector(".nine"))
     
-    const render = (e) => {
-        board.appendChild(e.target.value)
-    }
-
-    gameBoardArr.forEach((pos, index) => {
-        pos.addEventListener("click", render)
-    })
     console.log(gameBoardArr)
-    render()
-
+    return {gameBoardArr}
 })()
+
+
+const player = ((name, sign) => {
+    const boardMove = () => {
+    for (let pos of gameBoard.gameBoardArr) {
+        pos.addEventListener('click', function(event) {
+        event.target.innerText = "X"
+        })
+    }
+    return {
+        name,
+        sign,
+        boardMove
+    }
+}})
+
 
 const game = (() => {
-    console.log(gameBoard.gameBoardArr)
+    const gameBoardArr = gameBoard.gameBoardArr
+
+    const player1 = player("player1", "X") 
+    const player2 = player("player2", "O")
+
+    console.log(player1)
+
+    const playerMove = () => {
+        let turn = true;
+
+        function markBoard() {
+            if (turn) {
+                turn = false;
+                return player1.boardMove()
+            } else {
+                turn = true;
+                return player2.boardMove()
+            }
+        }
+        markBoard()
+        return{player1, player2, markBoard}
+    }
+
+    playerMove()
+    
+    // const classX = "X"
+    // const classO = "O"
+
+    // const paste = (event) =>{
+    //     if (event.target.innerText === classX) {
+    //         event.target.innerText = classO
+    //     } else {
+    //         event.target.innerText = classX
+    //     }
+        
+    // }
+
+    // gameBoardArr.forEach(pos => {
+    //     pos.addEventListener("click", paste)
+    // })
 })()
 
-
-const player = ((name) => {
-    return {
-        playerName : name,
-
-    }
-})
 
 const displayController = (() => {
 

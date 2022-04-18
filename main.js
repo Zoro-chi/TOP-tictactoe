@@ -1,3 +1,4 @@
+let resetbtn = document.querySelector(".reset")
 let turn = document.querySelector(".turn")
 const player1 = new Player("player1", "X") 
 const player2 = new Player("player2", "O")
@@ -7,7 +8,7 @@ turn.innerText = `${currentPlayer.name}`
 const gameBoard = (() => {
 
     let gameBoardArr = []
-    const spaces = [null, null, null, null, null, null, null, null, null]
+    let spaces = [null, null, null, null, null, null, null, null, null]
     const board = document.querySelector("#game-board")
     let positionOne = gameBoardArr.push(document.querySelector(".one"))
     let positionTwo = gameBoardArr.push(document.querySelector(".two"))
@@ -30,6 +31,15 @@ function Player(name, mark){
 const game = (() => {
     const gameBoardArr = gameBoard.gameBoardArr
     
+    const reset = () =>{
+        gameBoard.spaces = [null, null, null, null, null, null, null, null, null]
+        gameBoardArr.forEach(pos => pos.innerText = "")
+        currentPlayer = player1
+        turn.innerText = `${currentPlayer.name}`
+        turn.style.backgroundColor = ""
+    }
+    resetbtn.addEventListener("click", reset)
+
     const posclicked = (event) => {
         const id = event.target.dataset.position
         const playerHasWon = () =>{
@@ -68,7 +78,7 @@ const game = (() => {
             if(playerHasWon()) {
                 return turn.style.backgroundColor = "red"
             }
-            currentPlayer = currentPlayer == player1 ? player2 : player1;
+            currentPlayer = currentPlayer === player1 ? player2 : player1;
             turn.innerText = `${currentPlayer.name}`
         }
         
@@ -77,13 +87,8 @@ const game = (() => {
     gameBoardArr.forEach((pos, index) => {
         pos.addEventListener("click", posclicked)
     })
-    
 
 })()
 
 
-const displayController = (() => {
-
-
-})()
 

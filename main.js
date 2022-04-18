@@ -30,6 +30,9 @@ function Player(name, mark){
 
 const game = (() => {
     const gameBoardArr = gameBoard.gameBoardArr
+    let player1Wins = document.querySelector(".p1wins").textContent
+    let player2Wins = document.querySelector(".p2wins").textContent
+
     
     const reset = () =>{
         gameBoard.spaces = [null, null, null, null, null, null, null, null, null]

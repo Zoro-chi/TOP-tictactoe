@@ -36,6 +36,8 @@ button {
     font-size: 2rem;
     background: firebrick;
     color: white;
+    padding: 0.8rem;
+    border-radius: 35%;
 }
 button:hover{
     background-color: white;

@@ -27,7 +27,7 @@ body{
 #info{
     display: flex;
     justify-content: space-around;
-    width: 80%;
+    width: 100%;
     font-size: 2rem;
     margin: 2rem 0rem;
 }
@@ -62,8 +62,9 @@ button:active{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 7rem;
+    font-size: 6rem;
     font-weight: 700;
+    font-family: cursive;
 }
 #game-board div:hover{
     cursor: crosshair;
@@ -104,4 +105,47 @@ button:active{
 #game-board div .nine {
     grid-column: 3/4;
     grid-row: 3/4;
+}
+/* ------------------------------------ END GAME BOARD -----------------------------------*/
+
+@media screen and (max-width : 825px){
+    h1{
+        font-size: 4rem;
+    }
+}
+@media screen and (max-width : 665px){
+    h1{
+        font-size: 3rem;
+    }
+}
+@media screen and (max-width : 530px){
+    h1{
+        font-size: 1.8rem;
+    }
+    #main-page > h2{
+        font-size: 1.3rem;
+    }
+    h3{
+        font-size: 1.3rem;
+    }
+    #game-board div{
+        font-size: 4rem;
+    }
+}
+@media screen and (max-width : 425px) {
+    #info{
+        margin: 0;
+    }
+    h1{
+        font-size: 1.8rem;
+    }
+    #main-page > h2{
+        font-size: 1.3rem;
+    }
+    h3{
+        font-size: 1.3rem;
+    }
+    #game-board div{
+        font-size: 4rem;
+    }
 }

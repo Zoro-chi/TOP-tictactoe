@@ -1,11 +1,3 @@
-let resetbtn = document.querySelector(".reset")
-let turn = document.querySelector(".turn")
-const ai = document.querySelector(".PVE")
-const human = document.querySelector(".PVP")
-const player1 = new Player("player1", "X") 
-const player2 = new Player("player2", "O")
-let currentPlayer = player1
-turn.innerText = `${currentPlayer.name}`
 
 const gameBoard = (() => {
 
@@ -31,11 +23,19 @@ function Player(name, mark){
 }
 
 const game = (() => {
+    let resetbtn = document.querySelector(".reset")
+    let turn = document.querySelector(".turn")
+    const ai = document.querySelector(".PVE")
+    const human = document.querySelector(".PVP")
+    const player1 = new Player("player1", "X") 
+    const player2 = new Player("player2", "O")
+    let currentPlayer = player1
+    turn.innerText = `${currentPlayer.name}`
+
     const gameBoardArr = gameBoard.gameBoardArr
     let player1Wins = document.querySelector(".p1wins")
     let player2Wins = document.querySelector(".p2wins")
     let winningPlayer;
-
     
     const reset = () =>{
         gameBoard.spaces = [null, null, null, null, null, null, null, null, null]

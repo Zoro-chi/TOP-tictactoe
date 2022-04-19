@@ -63,7 +63,7 @@ div > button{
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     height: 60vh;
-    width: 60vw;
+    width: 40vw;
 }
 #game-board div {
     outline-style: auto;
@@ -131,10 +131,10 @@ div > button{
         font-size: 1.8rem;
     }
     #main-page > h2{
-        font-size: 1.3rem;
+        font-size: 1.5rem;
     }
     h3{
-        font-size: 1.3rem;
+        font-size: 1.5rem;
     }
     #game-board div{
         font-size: 4rem;
@@ -148,10 +148,15 @@ div > button{
         font-size: 1.8rem;
     }
     #main-page > h2{
-        font-size: 1.3rem;
+        font-size: 1.5rem;
+        width: 90%;
     }
     h3{
-        font-size: 1.3rem;
+        font-size: 1.5rem;
+    }
+    #game-board{
+        height: 50vh;
+        width: 50vw;
     }
     #game-board div{
         font-size: 4rem;

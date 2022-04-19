@@ -42,6 +42,9 @@ const game = (() => {
         currentPlayer = player1
         turn.innerText = `${currentPlayer.name}`
         turn.style.backgroundColor = ""
+        gameBoardArr.forEach((pos, index) => {
+            pos.addEventListener("click", posclicked)
+        })
     }
     const hardReset = () =>{
         gameBoard.spaces = [null, null, null, null, null, null, null, null, null]
@@ -186,6 +189,7 @@ const game = (() => {
             event.target.innerText = currentPlayer.mark
             
             if(playerHasWon()) {
+                gameBoardArr.forEach(pos => pos.removeEventListener("click", posclicked))
                 winningPlayer = currentPlayer.name
                 let winColor;
                 if (winningPlayer === "player1"){

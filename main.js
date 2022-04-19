@@ -1,5 +1,7 @@
 let resetbtn = document.querySelector(".reset")
 let turn = document.querySelector(".turn")
+const ai = document.querySelector(".PVE")
+const human = document.querySelector(".PVP")
 const player1 = new Player("player1", "X") 
 const player2 = new Player("player2", "O")
 let currentPlayer = player1
@@ -61,6 +63,7 @@ const game = (() => {
 
     const posclicked = (event) => {
         const id = event.target.dataset.position
+        let emptyPos = () => gameBoard.spaces.filter(pos => typeof(pos) !== "string")
         const playerHasWon = () =>{
             if (gameBoard.spaces[0] === currentPlayer.mark) {
                 if (gameBoard.spaces[1] == currentPlayer.mark && gameBoard.spaces[2] == currentPlayer.mark){
@@ -183,6 +186,17 @@ const game = (() => {
                     return turn.innerText = `${currentPlayer.name} wins diagonally`
                 }
             }
+            
+        }
+        const tie = () =>{
+            if(emptyPos().length == 0){
+                for(let i = 0; i < gameBoardArr.length; i++){
+                    gameBoardArr[i].style.backgroundColor = "green"
+                }
+                // turn.innerText = "Tie game"
+                return true
+            }
+            return false
         }
         if(!gameBoard.spaces[(+id - 1)]){
             gameBoard.spaces[(+id - 1)] = currentPlayer.mark
@@ -202,7 +216,11 @@ const game = (() => {
                     }
                 setTimeout(reset, 3000)
                 return turn.style.backgroundColor = winColor
-                
+            }
+            if(tie()) {
+                turn.style.backgroundColor = "green"
+                setTimeout(reset, 3000)
+                return turn.innerText = "Tie"
             }
             currentPlayer = currentPlayer === player1 ? player2 : player1;
             turn.innerText = `${currentPlayer.name}`
@@ -213,6 +231,7 @@ const game = (() => {
     gameBoardArr.forEach((pos, index) => {
         pos.addEventListener("click", posclicked)
     })
+
 
 })()
 

@@ -46,7 +46,15 @@ button:hover{
 button:active{
     transform: scaleY(-300px);
 }
-
+.game-mode{
+    display: flex;
+    justify-content: space-around;
+}
+div > button{
+    font-size: 1.2rem;
+    font-weight: 700;
+    display: none;
+}
 /* ------------------------------------ END MAIN PAGE -------------------------------------- */
 
 /* ------------------------------------GAME BOARD -----------------------------------*/
